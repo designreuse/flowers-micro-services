@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.microservice.flowers</groupId>
-	<artifactId>flowersmicroservices</artifactId>
+	<artifactId>flowers-micro-services</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Flowers Commerce Micro Services</name>
@@ -19,7 +19,6 @@
 		<module>product-service</module>
 		<module>statistics-service</module>
 		<module>notification-service</module>
-    <module>flowers-data-services</module>
-  </modules>
+  	</modules>
 
 </project>
