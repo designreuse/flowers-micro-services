@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.flowers.microservice</groupId>
+  <artifactId>commons.lib</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>commons</name>
+  <description>Library of common functions</description>
+  
+  
+  <properties>
+  	<slf4j.version>1.7.25</slf4j.version>
+	<java.version>1.8</java.version>  	
+  </properties>
+  
+  <dependencies>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>  
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-openfeign</artifactId>
+		    <version>1.4.0.RELEASE</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.github.openfeign</groupId>
+		    <artifactId>feign-jackson</artifactId>
+		    <version>9.5.1</version>
+		</dependency>
+  </dependencies>
+  
+</project>
