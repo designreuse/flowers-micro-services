@@ -33,6 +33,7 @@ public class AccountServiceImpl implements AccountService {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public Account findByName(String accountName) {
 		Assert.hasLength(accountName);

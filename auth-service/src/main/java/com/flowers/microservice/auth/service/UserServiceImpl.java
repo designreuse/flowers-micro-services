@@ -7,8 +7,10 @@ package com.flowers.microservice.auth.service;
  * @author cgordon
  *
  */
+
 import com.flowers.microservice.auth.domain.User;
 import com.flowers.microservice.auth.repository.UserRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,7 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository repository;
 
-	public void create(User user) {
+	public User create(User user) {
 
 		User existing = repository.findOne(user.getUsername());
 		Assert.isNull(existing, "user already exists: " + user.getUsername());
@@ -37,5 +39,36 @@ public class UserServiceImpl implements UserService {
 		repository.save(user);
 
 		log.info("new user has been created: {}", user.getUsername());
+		
+		return user;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@SuppressWarnings("deprecation")
+	@Override
+	public User findByName(String authName) {
+		Assert.hasLength(authName);
+		return repository.findOne(authName);
+	}
+
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void saveChanges(String name, User update) {
+
+		User auth = repository.findOne(name);
+		Assert.notNull(auth, "can't find auth with name " + name);
+		
+		auth.setUsername(update.getUsername());
+		auth.setPassword(update.getPassword());
+
+		repository.save(auth);
+
+		log.debug("auth {} changes has been saved", name);
 	}
 }
+	
