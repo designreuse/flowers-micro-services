@@ -5,6 +5,8 @@ package com.flowers.microservice.common.exception;
 
 /**
  * @author cgordon
+ * @created 12/02/2017 
+ * @version 1.0
  *
  */
 public abstract class ServiceException extends Exception
@@ -13,6 +15,11 @@ public abstract class ServiceException extends Exception
 
 	private String errorCode;
 
+	public ServiceException(String msg) {
+		
+		super(msg);
+	}
+	
     public String getErrorCode()
     {
         return errorCode;

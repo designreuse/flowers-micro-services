@@ -10,6 +10,10 @@
   <properties>
   	<slf4j.version>1.7.25</slf4j.version>
 	<java.version>1.8</java.version>  	
+	<json-sanitizer.version>1.0</json-sanitizer.version>	
+	<feign.jackson.version>9.5.1</feign.jackson.version>
+	<feign.open.version>1.4.0.RELEASE</feign.open.version>
+	<json-sanitizer.version>1.0</json-sanitizer.version>
   </properties>
   
   <dependencies>
@@ -26,12 +30,22 @@
 		<dependency>
 		    <groupId>org.springframework.cloud</groupId>
 		    <artifactId>spring-cloud-starter-openfeign</artifactId>
-		    <version>1.4.0.RELEASE</version>
+		    <version>${feign.open.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>io.github.openfeign</groupId>
 		    <artifactId>feign-jackson</artifactId>
-		    <version>9.5.1</version>
+		    <version>${feign.jackson.version}</version>
+		</dependency>
+        <dependency>
+            <groupId>com.mikesamuel</groupId>
+            <artifactId>json-sanitizer</artifactId>
+            <version>${json-sanitizer.version}</version>
+        </dependency>
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-core</artifactId>
+		    <version>4.2.3.RELEASE</version>
 		</dependency>
   </dependencies>
   

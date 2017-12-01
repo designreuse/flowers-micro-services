@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.flowers.microservice.common.exception;
 
 import java.io.IOException;
@@ -25,6 +22,8 @@ import feign.jackson.JacksonDecoder;
 
 /**
  * @author cgordon
+ * @created 12/02/2017
+ * @version 1.0
  *
  */
 public class FeignServiceExceptionErrorDecoder implements ErrorDecoder

@@ -5,6 +5,8 @@ package com.flowers.microservice.common.exception;
 
 /**
  * @author cgordon
+ * @created 12/02/2017
+ * @version 1.0
  *
  */
 public class RestException extends ServiceException{
@@ -13,8 +15,11 @@ public class RestException extends ServiceException{
 
 	private String errorCode;
 	
-	public RestException(){
-		
+	/**
+	 * @param msg
+	 */
+	public RestException(String msg) {
+		super(msg);
 	}
 
 	/**
@@ -30,7 +35,5 @@ public class RestException extends ServiceException{
 	public void setErrorCode(String errorCode) {
 		this.errorCode = errorCode;
 	}
-	
-	
 	
 }
