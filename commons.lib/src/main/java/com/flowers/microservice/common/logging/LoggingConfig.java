@@ -2,9 +2,7 @@ package com.flowers.microservice.common.logging;
 
 import java.io.IOException;
 
-import javax.annotation.Resource;
 import com.flowers.microservice.common.constants.*;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -26,7 +24,7 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource(value="logback.properties", ignoreResourceNotFound=true)
 public class LoggingConfig {
 
-	@Resource @Lazy private ApplicationContext appcontext;
+	@Lazy private ApplicationContext appcontext;
 	
     @Value("#{config['spring.logback.email.password']?:'log3mailpassw0rd'}")
 	private String logbackErrorMailPassword;
