@@ -8,7 +8,10 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Date;
+import java.nio.file.StandardCopyOption;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
@@ -16,6 +19,7 @@ import java.util.zip.ZipOutputStream;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import org.owasp.encoder.Encode;
+import java.time.temporal.ChronoField;
 
 import javax.annotation.Nonnull;
 import org.apache.commons.lang.StringEscapeUtils;
@@ -24,7 +28,6 @@ import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
@@ -61,7 +64,7 @@ public class FileFacade {
 
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), CharacterSet.UTF_8))) {
 
-			contents = br.lines().collect(Collectors.joining(""));
+			contents = br.lines().collect(Collectors.joining(Constants._BLANK));
 		} 
 		
 		return StringEscapeUtils.unescapeXml(Encode.forXmlContent(contents.toString()));
@@ -76,14 +79,11 @@ public class FileFacade {
 	public static boolean verifyFolder(@Nonnull String folder){
 		
 		File dir = new File(folder.toString());
-		if(!dir.exists()){
-			if (!dir.mkdir()) {
-
-				return false;
-			}
+		if(!dir.exists() && dir.mkdir()){
+				return true;
 		}
 
-		return true;
+		return false;
 	}
 
 	/**
@@ -95,10 +95,7 @@ public class FileFacade {
 	 */
 	public static boolean validateXmlFile(@Nonnull File file) throws IOException{
 
-		if(!file.exists()) return false;
-
-		Validate validate = new Validate();
-		return Handler.unchecked(() -> validate.isValidXmlFile(file)).get();
+		return Handler.unchecked(() -> ( new Validate()).isValidXmlFile(file)).get();
 	}
 	
 	/**
@@ -107,18 +104,34 @@ public class FileFacade {
 	 * @param file <code>File</code> to be renamed
 	 * @param new file name <code>String</code> 
 	 * @return file <code>File</code> that has been renamed
+	 * @throws IOException 
 	 */
-	public static File renameFile(@Nonnull File file, String newFilename){
+	public static File renameFile(@Nonnull File file, String newFilename) throws IOException{
+		
+		  Path src = Paths.get(file.getAbsolutePath()); 
+		  Path dest = Paths.get(newFilename); 
+		  Files.move(src, dest, StandardCopyOption.REPLACE_EXISTING);		
 
-		File f = file;
-		if(f.renameTo(new File(newFilename)))
-			f = new File(newFilename);
-		
-		f.setLastModified(new Date().getTime());
-		
-		return f;	
+		  return dest!=null? dest.toFile() : file;	
 	}
 
+	/**
+	 * Purpose of method is to standardize the file name call so it can be thread safe
+	 * 
+	 * @param directory <code>File</code> to be renamed
+	 * @param name change pattern <code>String</code> to be used 
+	 * @return 
+	 */
+	public static void renameFiles(@Nonnull File directory, @Nonnull final String prefix){
+
+		Arrays.asList(directory.listFiles()).stream().forEach(src ->{
+			
+			File dest = new File(String.valueOf(new StringBuilder().append(prefix).append(src.getName())));
+			src.renameTo(dest);
+			dest.setLastModified(Instant.now().getLong(ChronoField.INSTANT_SECONDS));
+		});
+	}
+	
 	/**
 	 * Utility function to determine the current directory regardless of the OS Type... 
 	 * 
@@ -150,7 +163,6 @@ public class FileFacade {
 		return currentDir;
 	}
 	
-	
 	/**
 	 * Method compresses files in specified folder to the requested zip file.
 	 * 
@@ -179,28 +191,33 @@ public class FileFacade {
 	}
 
 	/**
-	 * Java method accepts input text filename and reads file from disk. The string value of the text is returned from method.  
+	 * More efficient java 8 stream method accepts input text filename and reads file from disk. The string 
+	 * value of the text is returned from method.  
 	 * 
 	 * @param String <String> filename.
 	 * @return <String> contents of file.
 	 * @throws IOException
 	 */
-	public String readFile(String file) throws IOException {
-	    BufferedReader reader = new BufferedReader(new FileReader (file));
-	    String         line = null;
-	    StringBuilder  stringBuilder = new StringBuilder();
-	    String         ls = System.getProperty("line.separator");
+	public String readFile(String fileName) throws IOException {
 
-	    try {
-	        while((line = reader.readLine()) != null) {
-	            stringBuilder.append(line);
-	            stringBuilder.append(ls);
-	        }
-
-	        return stringBuilder.toString();
-	    } finally {
-	        reader.close();
-	    }
+		try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
+			return br.lines().collect(Collectors.joining(Constants._LINE_SEPERATOR));
+		}		
+	}
+	
+	/**
+	 * More efficient java 8 stream method accepts input text filename and reads file from disk. The list
+	 * array of string value of the text is returned from method.  
+	 * 
+	 * @param String <String> filename.
+	 * @return <List> contents of file as array list.
+	 * @throws IOException
+	 */
+	public List<String> readFileToList(String fileName) throws IOException{
+		
+		try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
+			return br.lines().collect(Collectors.toList());
+		}		
 	}
 	
 	/**
@@ -209,27 +226,18 @@ public class FileFacade {
 	 * @param String <String> filename.
 	 * @param <String> data with contents to be written to disc.
 	 * @return boolean primitive flag of write success.
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
+	 * @throws UnsupportedEncodingException 
 	 * @throws none
 	 */
-	public boolean writeFile(String filename, String data){
+	public void writeFile(String filename, String data) throws UnsupportedEncodingException, 
+					FileNotFoundException, IOException{
 		
-		Writer writer = null;
-		boolean success = true;
-
-		try {
-		    writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename), "utf-8"));
+		try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+								new FileOutputStream(filename), CharacterSet.UTF_8))){
 		    writer.write(data);
-		} catch (IOException e) {
-			System.out.printf("ERROR:: ", e.getMessage());
-			success = false;
-		} finally {
-		   try {
-			   writer.close();
-		   } catch (Exception e) {
-			   System.out.printf("ERROR:: ", e.getMessage());
-		   }
 		}
-		   return success;		
 	}	
 	
 	/**

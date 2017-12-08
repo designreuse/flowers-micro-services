@@ -47,6 +47,7 @@ public final class Constants {
 	public static final String _BLANK = "";
 	public static final String _YES = "Y";
 	public static final String _NO = "N";
+	public static final String _LINE_SEPERATOR = System.getProperty("line.separator");	
 
 	public static final String ROLE_VIEW = "ROLE_VIEW";
 	public static final String ROLE_DELETE = "ROLE_DELETE";
