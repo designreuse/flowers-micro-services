@@ -3,6 +3,7 @@
 	<name>notification-service</name>
 	<comment></comment>
 	<projects>
+		<project>commons.lib</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
