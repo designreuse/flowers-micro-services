@@ -49,9 +49,12 @@ public class FileFacade {
 	 * Method also uses owasp encoder to encode input data to mitigate potential {various security} data problems.
 	 * 
 	 * @param accepts a <code>File</code> object to perform the file move operation 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
+	 * @throws UnsupportedEncodingException 
 	 * @returns The contents as a <code>String</code> object.
 	 */	
-	public static String readEncodeXmlFile(@Nonnull File file) {
+	public static String readEncodeXmlFile(@Nonnull File file) throws UnsupportedEncodingException, FileNotFoundException, IOException {
 
 		if(!file.exists()) return Constants._WELL_FORMED_EMPTY_DOCUMENT;
 		String contents = Constants._BLANK;
@@ -59,12 +62,7 @@ public class FileFacade {
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), CharacterSet.UTF_8))) {
 
 			contents = br.lines().collect(Collectors.joining(""));
-
-		} catch (FileNotFoundException | UnsupportedEncodingException e) {
-			
-		} catch (IOException e) {
-			
-		}
+		} 
 		
 		return StringEscapeUtils.unescapeXml(Encode.forXmlContent(contents.toString()));
 	}
@@ -79,9 +77,8 @@ public class FileFacade {
 		
 		File dir = new File(folder.toString());
 		if(!dir.exists()){
-			if (dir.mkdir()) {
+			if (!dir.mkdir()) {
 
-			} else {
 				return false;
 			}
 		}
@@ -136,16 +133,15 @@ public class FileFacade {
 		    case WINDOWS: 
 		    	
 		    	currentDir = System.getProperty("user.dir").concat(File.separator);
-		    	
 		    	break;
 		    case MAC: 
-		    case UNIX: 
+		    case UNIX:
+		    	
 		    	currentDir = (new File(".").getAbsolutePath()).concat(File.separator);
-		    	
 		    	break;
-		    case OTHER: 
-		    	currentDir = File.pathSeparator;
+		    case OTHER:
 		    	
+		    	currentDir = File.pathSeparator;
 		    	break;
 		default:
 			break;
@@ -182,7 +178,7 @@ public class FileFacade {
 	    }
 	}
 
-/**
+	/**
 	 * Java method accepts input text filename and reads file from disk. The string value of the text is returned from method.  
 	 * 
 	 * @param String <String> filename.
@@ -252,7 +248,7 @@ public class FileFacade {
 	/**
 	 * 
 	 * @author cgordon
-	 * @created 09/05/2017
+	 * @created 12/05/2017
 	 * @version 1.0
 	 *
 	 * helper class to check the operating system this Java VM runs in
