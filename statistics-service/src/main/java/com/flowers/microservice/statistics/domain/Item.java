@@ -1,9 +1,15 @@
 package com.flowers.microservice.statistics.domain;
 
 import org.hibernate.validator.constraints.Length;
-
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
 
 public class Item {
 

@@ -3,6 +3,13 @@ package com.flowers.microservice.account.service;
 import com.flowers.microservice.account.domain.Account;
 import com.flowers.microservice.account.domain.User;
 
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
+
 public interface AccountService {
 
 	/**

@@ -7,6 +7,9 @@ import java.io.Serializable;
 
 /**
  * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
  *
  * The response from Loggly's REST endpoints, which is a
  * JSON object, containing only a "response" key and its

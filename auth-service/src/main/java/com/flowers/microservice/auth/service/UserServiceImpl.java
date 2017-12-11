@@ -3,20 +3,22 @@
  */
 package com.flowers.microservice.auth.service;
 
-/**
- * @author cgordon
- *
- */
 
 import com.flowers.microservice.auth.domain.User;
 import com.flowers.microservice.auth.repository.UserRepository;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
 
 @Service
 public class UserServiceImpl implements UserService {

@@ -16,6 +16,13 @@ import org.springframework.util.Assert;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
+
 @Service
 public class AccountServiceImpl implements AccountService {
 

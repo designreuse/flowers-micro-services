@@ -8,6 +8,8 @@ import com.flowers.microservice.logging.loggly.client.LogglyClient;
 
 /**
  * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
  *
  * log messages to <a href="http://loggly.com">Loggly</a>
  */

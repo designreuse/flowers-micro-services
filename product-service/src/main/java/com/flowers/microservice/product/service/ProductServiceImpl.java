@@ -10,6 +10,13 @@ import com.flowers.microservice.product.client.StatisticsServiceClient;
 import com.flowers.microservice.product.domain.Product;
 import com.flowers.microservice.product.repository.ProductRepository;
 
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
+
 @Service
 public class ProductServiceImpl implements ProductService {
 
@@ -23,7 +30,6 @@ public class ProductServiceImpl implements ProductService {
 	 * {@inheritDoc}
 	 */
 	@SuppressWarnings("deprecation")
-	@Override
 	public Product findProductByName(String productName) {
 		Assert.hasLength(productName);
 		return repository.findByName(productName);

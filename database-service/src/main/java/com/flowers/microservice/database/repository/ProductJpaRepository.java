@@ -4,20 +4,24 @@
 package com.flowers.microservice.database.repository;
 
 import java.util.List;
-
-/**
- * @author cgordon
- *
- */
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import com.flowers.microservice.database.model.Product;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
 
 @Repository
 @Component
 public interface ProductJpaRepository extends CrudRepository<Product, String> {
 	
+	@HystrixCommand(fallbackMethod = "reliable")
 	public default Product findByName(String name){
 		
 		List<Product> products = (List<Product>) findAll();
@@ -29,5 +33,13 @@ public interface ProductJpaRepository extends CrudRepository<Product, String> {
 		
 		return save(product);
 	}	
+
+	public default Product reliable() {
+
+		Product dproduct = new Product();
+		dproduct.setProductName("Default Product To Avoid Cascade Error");
+		
+		return dproduct;
+	}
 
 }

@@ -5,11 +5,16 @@ package com.flowers.microservice.product.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import com.flowers.microservice.product.domain.Product;
 import com.flowers.microservice.product.service.ProductService;
-
 import javax.validation.Valid;
+
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
 
 @RestController
 @RequestMapping(path = "/product")

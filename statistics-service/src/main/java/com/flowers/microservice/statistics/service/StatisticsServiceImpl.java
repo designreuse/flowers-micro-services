@@ -24,6 +24,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
+
 @Service
 public class StatisticsServiceImpl implements StatisticsService {
 

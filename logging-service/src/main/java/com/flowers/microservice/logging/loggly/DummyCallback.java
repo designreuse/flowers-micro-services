@@ -7,6 +7,8 @@ import com.flowers.microservice.logging.loggly.client.ILogglyClient;
 
 /**
  * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
  *
  */
 

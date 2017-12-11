@@ -9,6 +9,8 @@ import com.flowers.microservice.database.model.Product;
 
 /**
  * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
  *
  */
 

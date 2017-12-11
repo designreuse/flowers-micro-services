@@ -3,11 +3,6 @@
  */
 package com.flowers.microservice.product.service.security;
 
-/**
- * @author cgordon
- *
- */
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.AuthoritiesExtractor;
@@ -24,10 +19,13 @@ import org.springframework.security.oauth2.common.exceptions.InvalidTokenExcepti
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.OAuth2Request;
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
-
 import java.util.*;
 
 /**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
  * Extended implementation of {@link org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoTokenServices}
  *
  * By default, it designed to return only user details. This class provides {@link #getRequest(Map)} method, which

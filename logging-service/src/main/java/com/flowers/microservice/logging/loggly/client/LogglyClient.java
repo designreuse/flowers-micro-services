@@ -13,6 +13,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
  *
  * Loggly client
  *

@@ -3,16 +3,19 @@
  */
 package com.flowers.microservice.auth.domain;
 
-/**
- * @author cgordon
- *
- */
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.List;
+
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
 
 @Document(collection = "users")
 public class User implements UserDetails {

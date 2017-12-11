@@ -20,6 +20,10 @@ import org.springframework.security.oauth2.provider.token.ResourceServerTokenSer
 import java.util.*;
 
 /**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
  * Extended implementation of {@link org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoTokenServices}
  *
  * By default, it designed to return only user details. This class provides {@link #getRequest(Map)} method, which

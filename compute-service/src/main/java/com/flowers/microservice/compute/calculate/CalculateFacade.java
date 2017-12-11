@@ -5,8 +5,11 @@ package com.flowers.microservice.compute.calculate;
 
 /**
  * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
  *
  */
+
 public class CalculateFacade {
 
 	public static Double calculateOrderTax(String orderid){

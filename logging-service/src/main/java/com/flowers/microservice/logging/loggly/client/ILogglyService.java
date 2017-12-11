@@ -12,6 +12,9 @@ import retrofit2.http.Path;
 
 /**
  * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
  * Loggly REST interface, used internally by Retrofit
  *
  * @since 1.0.3

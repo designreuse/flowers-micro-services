@@ -5,8 +5,11 @@ package com.flowers.microservice.product.constants;
 
 /**
  * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
  *
  */
+
 public final class Constants {
 
 	public static final short DEFAULT_TIMEOUT = (short) 0x1000;

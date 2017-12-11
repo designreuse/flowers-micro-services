@@ -107,6 +107,10 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<dependency>
+		    <groupId>com.netflix.hystrix</groupId>
+		    <artifactId>hystrix-javanica</artifactId>
+		</dependency>
 	</dependencies>
 	
 	<build>

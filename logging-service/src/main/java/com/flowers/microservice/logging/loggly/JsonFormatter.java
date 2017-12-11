@@ -3,14 +3,17 @@
  */
 package com.flowers.microservice.logging.loggly;
 
-/**
- * @author cgordon
- *
- */
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
+
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
 
 /**
  * Formats log messages in JSON

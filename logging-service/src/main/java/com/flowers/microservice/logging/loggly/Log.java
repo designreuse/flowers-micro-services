@@ -5,8 +5,11 @@ package com.flowers.microservice.logging.loggly;
 
 /**
  * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
  *
  */
+
 public interface Log {
 	
 	Integer OFF=0;

@@ -5,7 +5,9 @@ package com.flowers.microservice.common.facade;
 
 /**
  * @author cgordon
- * 
+ * @created 12/11/2017
+ * @version 1.0
+ *
  * General purpose Tuple implementation of key/value data-type for use with collection data structures such as List/Maps etc 
  *
  */

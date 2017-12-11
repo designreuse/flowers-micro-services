@@ -3,11 +3,14 @@
  */
 package com.flowers.microservice.auth.service;
 
+import com.flowers.microservice.auth.domain.User;
+
 /**
  * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
  *
  */
-import com.flowers.microservice.auth.domain.User;
 
 public interface UserService {
 

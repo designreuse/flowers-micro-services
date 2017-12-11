@@ -3,12 +3,15 @@ package com.flowers.microservice.statistics.domain.timeseries;
 import com.flowers.microservice.statistics.domain.Currency;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Set;
 
 /**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
  * Represents daily time series data point containing
  * current account state
  */

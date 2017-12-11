@@ -3,10 +3,7 @@
  */
 package com.flowers.microservice.auth.controller;
 
-/**
- * @author cgordon
- *
- */
+
 import com.flowers.microservice.auth.domain.User;
 import com.flowers.microservice.auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.security.Principal;
+
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
 
 @RestController
 @RequestMapping("/users")

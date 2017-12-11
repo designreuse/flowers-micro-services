@@ -5,6 +5,13 @@ import com.flowers.microservice.statistics.domain.Currency;
 import java.math.BigDecimal;
 import java.util.Map;
 
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
+
 public interface ExchangeRatesService {
 
 	/**

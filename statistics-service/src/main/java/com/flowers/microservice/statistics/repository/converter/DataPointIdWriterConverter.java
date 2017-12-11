@@ -6,6 +6,13 @@ import com.flowers.microservice.statistics.domain.timeseries.DataPointId;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
+
 @Component
 public class DataPointIdWriterConverter implements Converter<DataPointId, DBObject> {
 

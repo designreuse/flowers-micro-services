@@ -4,20 +4,20 @@
 package com.flowers.microservice.database.service;
 
 import com.flowers.microservice.database.model.Product;
-
-/**
- * @author cgordon
- *
- */
-
 import com.flowers.microservice.database.repository.ProductJpaRepository;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
 
 @Service
 public class DatabaseServiceImpl implements DatabaseService {

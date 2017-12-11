@@ -9,9 +9,15 @@ import java.util.List;
 import java.util.function.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.flowers.microservice.compute.model.Product;
 import com.flowers.microservice.compute.repository.FlowersProductJpaRepository;
+
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
 
 @Service
 public class ComputeServiceImpl implements ComputeService {

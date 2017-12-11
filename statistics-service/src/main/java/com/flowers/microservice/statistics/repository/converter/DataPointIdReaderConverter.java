@@ -7,6 +7,13 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
+
 @Component
 public class DataPointIdReaderConverter implements Converter<DBObject, DataPointId> {
 

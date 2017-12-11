@@ -3,6 +3,13 @@ package com.flowers.microservice.statistics.domain.timeseries;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
+
 public class DataPointId implements Serializable {
 
 	private static final long serialVersionUID = 1L;

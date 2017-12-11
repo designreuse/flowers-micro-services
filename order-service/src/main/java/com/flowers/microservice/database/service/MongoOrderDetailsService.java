@@ -3,10 +3,7 @@
  */
 package com.flowers.microservice.database.service;
 
-/**
- * @author cgordon
- *
- */
+
 import com.flowers.microservice.database.repository.OrderJpaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +11,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
 
 @Service
 public class MongoOrderDetailsService implements UserDetailsService {

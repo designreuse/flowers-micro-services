@@ -5,6 +5,13 @@ import com.flowers.microservice.statistics.domain.timeseries.DataPoint;
 
 import java.util.List;
 
+/**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
+ */
+
 public interface StatisticsService {
 
 	/**

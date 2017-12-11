@@ -6,6 +6,10 @@ import com.flowers.microservice.statistics.domain.TimePeriod;
 import java.math.BigDecimal;
 
 /**
+ * @author cgordon
+ * @created 12/11/2017
+ * @version 1.0
+ *
  * Represents normalized {@link com.flowers.microservice.statistics.domain.Item} object
  * with {@link Currency#getBase()} currency and {@link TimePeriod#getBase()} time period
  */

@@ -2,9 +2,6 @@
  * 
  */
 package com.flowers.microservice.common.validate;
-/**
- * 
- */
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
