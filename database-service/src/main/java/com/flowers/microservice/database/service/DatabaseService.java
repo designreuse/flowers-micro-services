@@ -20,7 +20,7 @@ public interface DatabaseService {
 
 	List<Product> findAllProductList();
 	
-	Product updateProduct(Product product);
+	Product updateProduct(String productid, Product product);
 	
 	void deleteProduct(String productid);
 }

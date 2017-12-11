@@ -46,9 +46,9 @@ public class DatabaseServiceImpl implements DatabaseService {
 		return list;
 	}
 	
-	public Product updateProduct(Product product){
+	public Product updateProduct(String productid, Product product){
 		
-		return repository.findOne(product.getProductId()) != null? repository.save(product) : product;
+		return repository.findOne(productid) != null? repository.save(product) : product;
 	};
 	
 	public void deleteProduct(String productid){
