@@ -8,13 +8,11 @@ package com.flowers.microservice.product.domain;
  *
  */
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.GeneratedValue;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import java.util.Date;
 import java.util.List;
 
 @Document(collection = "products")
@@ -22,68 +20,76 @@ import java.util.List;
 public class Product {
 
 	@Id
-	private String name;
-
-	private Date lastSeen;
-
-	@Valid
-	private List<Item> incomes;
-
-	@Valid
-	private List<Item> expenses;
-
-	@Valid
-	@NotNull
-	private Saving saving;
-
-	@Length(min = 0, max = 20_000)
-	private String note;
-
+	@GeneratedValue
+	private Integer productId;
+	
+	@Valid	private String name;
+	private String shortDescription;
+	private String longDescription;
+	
+	@Valid private List<Item> items;
+	
+	/**
+	 * @return the productId
+	 */
+	public Integer getProductId() {
+		return productId;
+	}
+	/**
+	 * @param productId the productId to set
+	 */
+	public void setProductId(Integer productId) {
+		this.productId = productId;
+	}
+	/**
+	 * @return the name
+	 */
 	public String getName() {
 		return name;
 	}
-
+	/**
+	 * @param name the name to set
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public Date getLastSeen() {
-		return lastSeen;
+	/**
+	 * @return the shortDescription
+	 */
+	public String getShortDescription() {
+		return shortDescription;
 	}
-
-	public void setLastSeen(Date lastSeen) {
-		this.lastSeen = lastSeen;
+	/**
+	 * @param shortDescription the shortDescription to set
+	 */
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
 	}
-
-	public List<Item> getIncomes() {
-		return incomes;
+	/**
+	 * @return the longDescription
+	 */
+	public String getLongDescription() {
+		return longDescription;
 	}
-
-	public void setIncomes(List<Item> incomes) {
-		this.incomes = incomes;
+	/**
+	 * @param longDescription the longDescription to set
+	 */
+	public void setLongDescription(String longDescription) {
+		this.longDescription = longDescription;
 	}
-
-	public List<Item> getExpenses() {
-		return expenses;
+	/**
+	 * @return the items
+	 */
+	public List<Item> getItems() {
+		return items;
 	}
-
-	public void setExpenses(List<Item> expenses) {
-		this.expenses = expenses;
+	/**
+	 * @param items the items to set
+	 */
+	public void setItems(List<Item> items) {
+		this.items = items;
 	}
-
-	public Saving getSaving() {
-		return saving;
-	}
-
-	public void setSaving(Saving saving) {
-		this.saving = saving;
-	}
-
-	public String getNote() {
-		return note;
-	}
-
-	public void setNote(String note) {
-		this.note = note;
-	}
+	
+	
+	
 }

@@ -1,0 +1,63 @@
+/**
+ * 
+ */
+package com.flowers.microservice.database.service;
+
+import com.flowers.microservice.database.model.Order;
+
+/**
+ * @author cgordon
+ *
+ */
+
+import com.flowers.microservice.database.repository.OrderJpaRepository;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Supplier;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderServiceImpl implements OrderService {
+
+	@Autowired
+	private OrderJpaRepository repository;
+
+
+	public Order createOrder(Order order){
+		
+		return repository.save(order);
+	};
+	
+	public Order findOrderById(String orderid){
+		
+		return (Order) repository.findOne(orderid);
+	};
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public List<Order> findAllOrderList(){
+		
+		List<Order> list = new ArrayList<Order>();
+		
+		copyListElements((List)repository.findAll(),(Supplier<Collection<Order>>)list);
+		
+		return list;
+	}
+	
+	public Order updateOrder(String orderid, Order order){
+		
+		return repository.findOne(orderid) != null? repository.save(order) : repository.update(order);
+	};
+	
+	public void deleteOrder(String orderid){
+		
+		repository.delete(orderid);
+	};
+	
+    public static <T> void copyListElements(final List<T> list, Supplier<Collection<T>> targetCollection) {
+        list.forEach(targetCollection.get()::add);
+    }
+}
+	

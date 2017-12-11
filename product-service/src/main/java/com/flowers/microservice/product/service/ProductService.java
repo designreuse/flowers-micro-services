@@ -4,7 +4,6 @@
 package com.flowers.microservice.product.service;
 
 import com.flowers.microservice.product.domain.Product;
-import com.flowers.microservice.product.domain.User;
 
 /**
  * @author cgordon
@@ -12,30 +11,13 @@ import com.flowers.microservice.product.domain.User;
  */
 public interface ProductService {
 
-	/**
-	 * Finds account by given name
-	 *
-	 * @param accountName
-	 * @return found account
-	 */
-	Product findByName(String accountName);
+	public Product findProductByName(String name);
 
-	/**
-	 * Checks if account with the same name already exists
-	 * Invokes Auth Service user creation
-	 * Creates new account with default parameters
-	 *
-	 * @param user
-	 * @return created account
-	 */
-	Product create(User user);
+	public Product findProductById(String id);
+	
+	public Product create(Product Product);
 
-	/**
-	 * Validates and applies incoming account updates
-	 * Invokes Statistics Service update
-	 *
-	 * @param name
-	 * @param update
-	 */
-	void saveChanges(String name, Product update);
+	public Product update(String id, Product Product);
+	
+	public void delete(String id);	
 }
