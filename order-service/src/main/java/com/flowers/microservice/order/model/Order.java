@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.flowers.microservice.database.model;
+package com.flowers.microservice.order.model;
 
 import java.util.List;
 

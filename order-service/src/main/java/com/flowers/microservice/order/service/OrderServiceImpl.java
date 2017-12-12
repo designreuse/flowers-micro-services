@@ -1,16 +1,17 @@
 /**
  * 
  */
-package com.flowers.microservice.database.service;
+package com.flowers.microservice.order.service;
 
-import com.flowers.microservice.database.model.Order;
-import com.flowers.microservice.database.repository.OrderJpaRepository;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.flowers.microservice.order.model.Order;
+import com.flowers.microservice.order.repository.OrderJpaRepository;
 
 /**
  * @author cgordon

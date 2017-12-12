@@ -41,6 +41,18 @@ zuul:
         stripPrefix: false
         sensitiveHeaders:
 
+    order-service:
+        path: /order/**
+        serviceId: order-service
+        stripPrefix: false
+        sensitiveHeaders:
+
+    database-service:
+        path: /database/**
+        serviceId: database-service
+        stripPrefix: false
+        sensitiveHeaders:
+
     statistics-service:
         path: /statistics/**
         serviceId: statistics-service

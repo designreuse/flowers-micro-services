@@ -1,10 +1,11 @@
 /**
  * 
  */
-package com.flowers.microservice.database.service;
+package com.flowers.microservice.order.service;
 
 import java.util.List;
-import com.flowers.microservice.database.model.Order;
+
+import com.flowers.microservice.order.model.Order;
 
 /**
  * @author cgordon

@@ -16,7 +16,6 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping(path = "/registry")
 public class RegistryController {
-
 	
 	@RequestMapping(path = "/find/{id}", method = RequestMethod.POST)
 	public String getRegistryEntity(@PathVariable @Valid String id) {

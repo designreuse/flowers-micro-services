@@ -7,7 +7,10 @@ import com.flowers.microservice.auth.service.MongoUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
@@ -37,16 +40,26 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
  */
 
 @SpringBootApplication
+@EnableAutoConfiguration
 @EnableCircuitBreaker
 @EnableResourceServer
 @EnableDiscoveryClient
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class AuthApplication {
+public class AuthApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AuthApplication.class, args);
 	}
 
+	public AuthApplication(){
+		
+	}
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(AuthApplication.class);
+    }
+	
 	@Configuration
 	@EnableWebSecurity
 	protected static class webSecurityConfig extends WebSecurityConfigurerAdapter {

@@ -4,6 +4,7 @@ import com.flowers.microservice.account.service.security.CustomUserInfoTokenServ
 import feign.RequestInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -32,6 +33,7 @@ import org.springframework.security.oauth2.provider.token.ResourceServerTokenSer
  */
 
 @SpringBootApplication
+@EnableAutoConfiguration
 @EnableCircuitBreaker
 @EnableResourceServer
 @EnableDiscoveryClient
@@ -49,6 +51,10 @@ public class AccountApplication extends ResourceServerConfigurerAdapter {
 		SpringApplication.run(AccountApplication.class, args);
 	}
 
+	public AccountApplication(){
+		
+	}
+	
 	@Bean
 	@ConfigurationProperties(prefix = "security.oauth2.client")
 	public ClientCredentialsResourceDetails clientCredentialsResourceDetails() {

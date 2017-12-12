@@ -6,7 +6,10 @@ package com.flowers.microservice.compute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,14 +39,24 @@ import com.flowers.microservice.compute.service.MongoDataDetailsService;
  */
 
 @SpringBootApplication
+@EnableAutoConfiguration
 @EnableResourceServer
 @EnableDiscoveryClient
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class ComputeApplication {
+public class ComputeApplication  extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ComputeApplication.class, args);
 	}
+	
+	public ComputeApplication(){
+		
+	}
+	
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(ComputeApplication.class);
+    }
 
 	@Configuration
 	@EnableWebSecurity

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
@@ -33,7 +35,7 @@ import java.util.Arrays;
 @EnableOAuth2Client
 @EnableFeignClients
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class StatisticsApplication {
+public class StatisticsApplication extends SpringBootServletInitializer {
 
 	@Autowired
 	private ResourceServerProperties sso;
@@ -42,6 +44,15 @@ public class StatisticsApplication {
 		SpringApplication.run(StatisticsApplication.class, args);
 	}
 
+	public StatisticsApplication(){
+		
+	}
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(StatisticsApplication.class);
+	}
+	
 	@Bean
 	public ResourceServerTokenServices tokenServices() {
 		return new CustomUserInfoTokenServices(sso.getUserInfoUri(), sso.getClientId());

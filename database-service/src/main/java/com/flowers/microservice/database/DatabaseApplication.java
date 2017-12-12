@@ -6,7 +6,10 @@ package com.flowers.microservice.database;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,14 +39,24 @@ import com.flowers.microservice.database.service.MongoUserDetailsService;
  */
 
 @SpringBootApplication
+@EnableAutoConfiguration
 @EnableResourceServer
 @EnableDiscoveryClient
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class DatabaseApplication {
+public class DatabaseApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DatabaseApplication.class, args);
 	}
+
+	public DatabaseApplication(){
+		
+	}
+	
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(DatabaseApplication.class);
+    }
 
 	@Configuration
 	@EnableWebSecurity

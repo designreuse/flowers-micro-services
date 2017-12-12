@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.flowers.microservice.database.controller;
+package com.flowers.microservice.order.controller;
 
 import java.util.List;
 import javax.validation.Valid;
@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.flowers.microservice.database.model.Order;
-import com.flowers.microservice.database.service.OrderService;
+
+import com.flowers.microservice.order.model.Order;
+import com.flowers.microservice.order.service.OrderService;
 
 /**
  * @author cgordon

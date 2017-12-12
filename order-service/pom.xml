@@ -4,11 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.microservice.flowers</groupId>
-	<artifactId>auth-service</artifactId>
+	<artifactId>order-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
-	<name>auth-service</name>
+	<name>order-service</name>
+	<description>Spring Boot Order Service Thymeleaf Implementation</description>
 	<url>http://maven.apache.org</url>
 
 	<parent>
@@ -24,6 +25,22 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter</artifactId>
+		    <exclusions>
+		        <!-- 
+		        <exclusion>
+		            <artifactId>logback-classic</artifactId>
+		            <groupId>ch.qos.logback</groupId>
+		        </exclusion>
+		         -->
+		        <exclusion>
+		            <artifactId>log4j-over-slf4j</artifactId>
+		            <groupId>org.slf4j</groupId>
+		        </exclusion>
+		    </exclusions>
+		</dependency>	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
@@ -88,11 +105,20 @@
 		    <groupId>com.netflix.hystrix</groupId>
 		    <artifactId>hystrix-javanica</artifactId>
 		</dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>		
+	    <dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	      <scope>test</scope>
+	    </dependency>		
 	</dependencies>
 
 	<dependencyManagement>
