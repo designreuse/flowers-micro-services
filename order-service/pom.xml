@@ -6,7 +6,7 @@
 	<groupId>com.microservice.flowers</groupId>
 	<artifactId>order-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>order-service</name>
 	<description>Spring Boot Order Service Thymeleaf Implementation</description>
@@ -63,10 +63,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 		<dependency>
 		    <groupId>javax.persistence</groupId>

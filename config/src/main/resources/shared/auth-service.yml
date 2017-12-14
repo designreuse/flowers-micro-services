@@ -8,5 +8,5 @@ spring:
       port: 27017
 
 server:
-  context-path: /uaa
+  context-path: /auth
   port: 5000

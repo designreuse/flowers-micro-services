@@ -50,10 +50,6 @@ public class AccountApplication extends ResourceServerConfigurerAdapter {
 	public static void main(String[] args) {
 		SpringApplication.run(AccountApplication.class, args);
 	}
-
-	public AccountApplication(){
-		
-	}
 	
 	@Bean
 	@ConfigurationProperties(prefix = "security.oauth2.client")
@@ -66,7 +62,6 @@ public class AccountApplication extends ResourceServerConfigurerAdapter {
 		return new OAuth2FeignRequestInterceptor(new DefaultOAuth2ClientContext(), clientCredentialsResourceDetails());
 	}
 
-	@Bean
 	public OAuth2RestTemplate clientCredentialsRestTemplate() {
 		return new OAuth2RestTemplate(clientCredentialsResourceDetails());
 	}
@@ -79,7 +74,7 @@ public class AccountApplication extends ResourceServerConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/" , "/demo").permitAll()
+				.antMatchers("/" , "/svcs").permitAll()
 				.anyRequest().authenticated();
 	}
 }

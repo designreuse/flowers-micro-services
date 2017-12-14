@@ -18,8 +18,14 @@ zuul:
 
   routes:
     auth-service:
-        path: /uaa/**
+        path: /auth/**
         url: http://auth-service:5000
+        stripPrefix: false
+        sensitiveHeaders:
+        
+    eureka-service:
+        path: /registry/**
+        serviceId: registry
         stripPrefix: false
         sensitiveHeaders:
 

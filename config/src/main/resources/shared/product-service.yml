@@ -3,7 +3,7 @@ security:
     client:
       clientId: product-service
       clientSecret: ${PRODUCT_SERVICE_PASSWORD}
-      accessTokenUri: http://auth-service:5000/uaa/oauth/token
+      accessTokenUri: http://auth-service:5000/auth/oauth/token
       grant-type: client_credentials
       scope: server
 
@@ -18,4 +18,4 @@ spring:
 
 server:
   context-path: /products
-  port: 6000
+  port: 5007
