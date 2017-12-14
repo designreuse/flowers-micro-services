@@ -9,6 +9,9 @@ package com.flowers.microservice.product.domain;
  */
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.GeneratedValue;
 import javax.validation.constraints.NotNull;
 
@@ -23,6 +26,8 @@ public class Item {
 	private String name;
 	private String sku;
 	private String description;
+	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="mm/dd/yyyy", timezone="EST")
 	private String availableDate;
 	private Double price;
 	private Integer length;	

@@ -7,16 +7,16 @@ package com.flowers.microservice.order.model;
  * @author cgordon
  *
  */
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.validation.Valid;
 import java.util.List;
 
+@Entity
 @Document(collection = "products")
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
 
 	@Id

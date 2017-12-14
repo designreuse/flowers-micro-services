@@ -3,6 +3,8 @@
  */
 package com.flowers.microservice.product.service;
 
+import java.util.List;
+
 import com.flowers.microservice.product.domain.Product;
 
 /**
@@ -17,6 +19,8 @@ public interface ProductService {
 	public Product findProductByName(String name);
 
 	public Product findProductById(String id);
+	
+	public List<Product> findAllProducts();	
 	
 	public Product create(Product Product);
 

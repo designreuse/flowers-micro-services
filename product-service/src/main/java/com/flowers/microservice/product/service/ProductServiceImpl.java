@@ -3,6 +3,8 @@
  */
 package com.flowers.microservice.product.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -64,6 +66,11 @@ public class ProductServiceImpl implements ProductService {
 		return repository.findOne(id);
 	}
 
+	@Override
+	public List<Product> findAllProducts() {
+		return repository.findAllProducts();
+	}
+	
 	@Override
 	public void delete(String id) {
 		repository.delete(id);

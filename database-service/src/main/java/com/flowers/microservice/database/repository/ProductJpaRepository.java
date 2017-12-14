@@ -8,7 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import com.flowers.microservice.database.model.Product;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 /**
  * @author cgordon
@@ -21,7 +20,6 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 @Component
 public interface ProductJpaRepository extends CrudRepository<Product, String> {
 	
-	@HystrixCommand(fallbackMethod = "reliable")
 	public default Product findByName(String name){
 		
 		List<Product> products = (List<Product>) findAll();

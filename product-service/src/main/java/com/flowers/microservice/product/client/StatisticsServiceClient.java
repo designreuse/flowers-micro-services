@@ -20,7 +20,16 @@ import com.flowers.microservice.product.domain.Product;
 @FeignClient(name = "statistics-service")
 public interface StatisticsServiceClient {
 
+	@RequestMapping(method = RequestMethod.GET, value = "/statistics/{productName}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	String getStatistics(@PathVariable("accountName") String productName, Product product);
+
 	@RequestMapping(method = RequestMethod.PUT, value = "/statistics/{productName}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	void updateStatistics(@PathVariable("accountName") String productName, Product product);
-
+	
+	@RequestMapping(method = RequestMethod.POST, value = "/statistics/{productName}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	void saveStatistics(@PathVariable("accountName") String productName, Product product);
+	
+	@RequestMapping(method = RequestMethod.DELETE, value = "/statistics/{productName}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	void deleteStatistics(@PathVariable("accountName") String productName, Product product);	
+	
 }

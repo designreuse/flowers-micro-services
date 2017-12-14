@@ -22,7 +22,8 @@ public final class Constants {
 	public static final String UTF8_BOM = "\uFEFF";		
 	
 	public static final String REGEXP_VALID_EMAIL = "^(.+)@(.+)$";	
-	public static final String REGEXP_VALID_FLAG = "^[Y|YES|T|TRUE|1|N|NO|F|FALSE|0]{1}$";	
+	public static final String REGEXP_VALID_FLAG = "^[Y|y|YES|T|t|TRUE|1|N|n|NO|F|f|FALSE|0]{1}$";	
+	public static final String REGEXP_VALID_BOOLFLAG = "^[true|false]{1}$";
 	
 	public final static String ERROR_SERVICE_MESSAGE = "Service not Found"; 
 	

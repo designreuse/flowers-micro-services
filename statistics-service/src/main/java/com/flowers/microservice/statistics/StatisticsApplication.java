@@ -1,25 +1,11 @@
 package com.flowers.microservice.statistics;
 
-import com.flowers.microservice.statistics.repository.converter.DataPointIdReaderConverter;
-import com.flowers.microservice.statistics.repository.converter.DataPointIdWriterConverter;
-import com.flowers.microservice.statistics.service.security.CustomUserInfoTokenServices;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.core.convert.CustomConversions;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
-import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
-import java.util.Arrays;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 /**
  * @author cgordon
@@ -28,43 +14,14 @@ import java.util.Arrays;
  *
  */
 
-@SpringBootApplication
-@EnableCircuitBreaker
-@EnableResourceServer
-@EnableDiscoveryClient
-@EnableOAuth2Client
 @EnableFeignClients
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class StatisticsApplication extends SpringBootServletInitializer {
-
-	@Autowired
-	private ResourceServerProperties sso;
+@EnableCircuitBreaker
+@EnableDiscoveryClient
+@EnableZuulProxy
+@SpringBootApplication
+public class StatisticsApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(StatisticsApplication.class, args);
-	}
-
-	public StatisticsApplication(){
-		
-	}
-
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(StatisticsApplication.class);
-	}
-	
-	@Bean
-	public ResourceServerTokenServices tokenServices() {
-		return new CustomUserInfoTokenServices(sso.getUserInfoUri(), sso.getClientId());
-	}
-
-	@Configuration
-	static class CustomConversionsConfig {
-
-		@Bean
-		public CustomConversions customConversions() {
-			return new CustomConversions(Arrays.asList(new DataPointIdReaderConverter(),
-					new DataPointIdWriterConverter()));
-		}
 	}
 }

@@ -5,11 +5,10 @@ package com.flowers.microservice.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 /**
  * @author cgordon
@@ -18,16 +17,12 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  *
  */
 
-@SpringBootApplication
+@EnableFeignClients
 @EnableCircuitBreaker
-@EnableResourceServer
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class OrderApplication extends SpringBootServletInitializer {
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(SpringApplication.class);
-    }
+@EnableDiscoveryClient
+@EnableZuulProxy
+@SpringBootApplication
+public class OrderApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(OrderApplication.class, args);

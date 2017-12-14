@@ -7,16 +7,21 @@ package com.flowers.microservice.product.domain;
  * @author cgordon
  *
  */
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.flowers.microservice.product.constants.Constants;
+
+import lombok.Data;
+
 import javax.persistence.GeneratedValue;
 import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
+
 import java.util.List;
 
+@Data
 @Document(collection = "products")
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
 
 	@Id
@@ -26,6 +31,9 @@ public class Product {
 	@Valid	private String name;
 	private String shortDescription;
 	private String longDescription;
+	
+	@Pattern(regexp=Constants.REGEXP_VALID_BOOLFLAG, message ="Valid value for this field is either Y or N")
+	private boolean active=true;	
 	
 	@Valid private List<Item> items;
 	
@@ -89,7 +97,17 @@ public class Product {
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
-	
-	
+	/**
+	 * @return the active
+	 */
+	public boolean isActive() {
+		return active;
+	}
+	/**
+	 * @param active the active to set
+	 */
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 	
 }

@@ -4,12 +4,12 @@
 package com.flowers.microservice.config;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.config.server.EnableConfigServer;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 /**
  * @author cgordon
@@ -17,24 +17,15 @@ import org.springframework.cloud.config.server.EnableConfigServer;
  * @version 1.0
  *
  */
-
-@SpringBootApplication
-@EnableAutoConfiguration
+@EnableFeignClients
 @EnableCircuitBreaker
+@EnableDiscoveryClient
+@EnableZuulProxy
+@SpringBootApplication
 @EnableConfigServer
-public class ConfigApplication extends SpringBootServletInitializer {
-
-	public ConfigApplication(){
-		
-	}
-	
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(SpringApplication.class);
-    }
+public class ConfigApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(ConfigApplication.class, args);
 	}
-
 }
