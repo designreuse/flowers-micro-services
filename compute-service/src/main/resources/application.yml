@@ -1,0 +1,30 @@
+
+spring:
+          
+  profiles:
+     active: native
+     
+  data:
+    mongodb:
+      database: mydata    
+      host: localhost
+      port: 27107
+      username: user
+      password: p@ssw0rd      
+      repositories:
+        enabled: true
+      
+  datasource:
+      url: jdbc:mongo:localhost:mydata
+      username: user
+      password: p@ssw0rd
+      platform: mongo
+      continueOnError: true
+        
+server:
+  port: 8081
+  context-path: /compute
+
+security:
+  user:
+    password: ${CONFIG_SERVICE_PASSWORD}

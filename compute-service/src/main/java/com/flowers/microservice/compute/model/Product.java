@@ -3,9 +3,10 @@
  */
 package com.flowers.microservice.compute.model;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @author cgordon
@@ -14,13 +15,26 @@ import javax.persistence.Id;
  *
  */
 
-@Entity
+@Document(collection = "domain")
 public class Product {
 
 	private String productId;
+	
+    @Indexed(unique = true)	
 	private String productName;
 	private String productDescription;
 	private Double price;
+	
+	public Product(){};
+	
+	public Product(String productId, String productName, String productDescription, Double price){
+		
+		this.productId=productId;
+		this.productName=productName;
+		this.productDescription=productDescription;
+		this.price=price;
+	};
+	
 	/**
 	 * @return the productId
 	 */

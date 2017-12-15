@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.flowers.microservice.compute.model.Product;
-import com.flowers.microservice.compute.repository.FlowersProductJpaRepository;
+import com.flowers.microservice.compute.repository.FlowersProductMongoRepository;
 
 /**
  * @author cgordon
@@ -23,8 +23,7 @@ import com.flowers.microservice.compute.repository.FlowersProductJpaRepository;
 public class ComputeServiceImpl implements ComputeService {
 
 	@Autowired
-	private FlowersProductJpaRepository repository;
-
+	private FlowersProductMongoRepository repository;
 
 	public Product createProduct(Product product){
 		
