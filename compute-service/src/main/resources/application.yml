@@ -6,18 +6,18 @@ spring:
      
   data:
     mongodb:
-      database: mydata    
+      database: flowersdb    
       host: localhost
-      port: 27107
-      username: user
-      password: p@ssw0rd      
+      port: 27017
+      username: appuser
+      password: password$001      
       repositories:
         enabled: true
       
   datasource:
-      url: jdbc:mongo:localhost:mydata
-      username: user
-      password: p@ssw0rd
+      url: mongo:localhost:flowersdb
+      username: appuser
+      password: password$001
       platform: mongo
       continueOnError: true
         

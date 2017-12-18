@@ -29,18 +29,26 @@ public interface FlowersProductMongoRepository extends MongoRepository<Product, 
 	@Query("{productName: { $regex: ?0 } })")
 	List<Product> findCustomByRegExProductName(String name);
 
+	public default List<Product> findCustomListProductName(String name){
+		
+		return this.findCustomByRegExProductName(".*name*");
+	};
+	
 	public default List<Product> findAllByName(String name){
 
-		List<Product> products = findAllProducts();
-		return products.stream().filter(product -> product.getProductName().equals(name)).collect(Collectors.toList());
+		return findAllProducts().stream().filter(product -> product.getProductName().matches(String.format(".*%s*", name))).collect(Collectors.toList());
+	}
+
+	public default Product findById(String key){
+
+		return findOne(key);
 	}
 
 	public default Product findByName(String name){
 
-		List<Product> products = findAllProducts();
-		return products.stream().filter(product -> product.getProductName().equals(name)).findFirst().orElseGet(Product::new);
+		return findAllProducts().stream().filter(product -> product.getProductName().equalsIgnoreCase(name)).findFirst().orElse(new Product());
 	}
-
+	
 	public default Product update(Product product){
 
 		return save(product);

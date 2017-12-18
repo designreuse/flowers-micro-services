@@ -11,6 +11,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+
+import com.flowers.microservice.compute.facade.FunctionFacade;
 import com.flowers.microservice.compute.model.Product;
 import com.flowers.microservice.compute.repository.FlowersProductMongoRepository;
 
@@ -45,22 +47,42 @@ public class ComputeApplication{
 			// fetch all Product
 			System.out.println("Products found with findAll():");
 			System.out.println("-------------------------------");
-			for (Product product : repository.findAllProducts()) {
-				System.out.println(product);
-			}
+			System.out.println(FunctionFacade.printList(repository.findAllProducts()));
 			System.out.println();
 
 			// fetch an individual Product
-			System.out.println("Products found with findByFirstName('Alice'):");
+			System.out.println("Products found with findByName('001'):");
 			System.out.println("--------------------------------");
 			System.out.println(repository.findByName("001"));
+			System.out.println();			
 
-			System.out.println("Products found with findByName('Smith'):");
+			System.out.println("Products list found with findAllByName('002'):");
 			System.out.println("--------------------------------");
-			for(Product product : repository.findAllByName("001")) {
-				System.out.println(product);
-			}	
+			System.out.println(FunctionFacade.printList(repository.findAllByName("002")));
+			System.out.println();			
+	
+			System.out.println("Products [EXPECT FAIL] found with findByName('00A'):");
+			System.out.println("--------------------------------");
+			System.out.println(repository.findByName("00A"));
+			System.out.println();			
+			
+			System.out.println("\n\n\n\n USING QUERY EMBEDDED ANNOTAE");
+			
+			// fetch an individual Product
+			System.out.println("Products found with findCustomByProductName('001'):");
+			System.out.println("--------------------------------");
+			System.out.println(repository.findCustomByProductName("001"));
+			System.out.println();			
 
+			System.out.println("Products found all with findCustomListProductName('00'):");
+			System.out.println("--------------------------------");
+			System.out.println(FunctionFacade.printList(repository.findCustomListProductName("00")));	
+			System.out.println();			
+
+			System.out.println("Products [EXPECT FAIL] found with findByName('00A'):");
+			System.out.println("--------------------------------");
+			System.out.println(repository.findCustomByProductName("00A"));
+			System.out.println();			
 		};
 	}
 }
