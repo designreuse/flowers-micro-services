@@ -10,9 +10,9 @@ As a rule, each micro service adheres to the standard C-R-U-D operations on the 
 
 The technology stack includes Apache Maven, Java 1.8, Stream API, Method references, Functions, Functional Interfaces, Lambda expressions and other more recent tools.
 
-Performance was a key concern in terms of throughput and resource (cpu|memory) management. As a result the following were carefully considered:
-i) Special care was made to ensure that looping and other expensive operations were limited to a maximum O(log n) performance.
-ii) Stream API was used to perform bulk operations on various Collections objects. 
+Performance was a key concern in terms of throughput and resource (cpu|memory) management. As a result the following were carefully considered:<br>
+i) Special care was made to ensure that looping and other expensive operations were limited to a maximum O(log n) performance.<br>
+ii) Stream API was used to perform bulk operations on various Collections objects.<br> 
 
 Apache Maven was used to streamline and manage jar file versions as well as automate the various JUnit tests that were integrated into the compile and packaging process. Security being an implicit and obvious design time concern was built in from day one. Various OWASP suggested code features were implemented. All communication was done over Transport Layer Security (TLS).
 Various software architectural design patterns were used. These include Façade & Null Objects.
