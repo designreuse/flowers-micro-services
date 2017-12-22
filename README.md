@@ -1,12 +1,12 @@
 
-*flowers micro services
+# flowers micro services
 
 This is a Apache Maven project consisting of a collection of REST json micro service modules sub-projects. By nature, microservices are best when light weight with a minimal footprint. It follows therefore that these microservices are bootstrap implemented using Spring Boot, and data is persisted to a NoSQL database (MongoDB).
 The Hystrix API (Netflix) was used to implement the exception isolation strategy, circuit breaker, and fallback software design patterns (specific micro-services) to prevent micro service failures from cascading.
 Build process and library version management was configured to use the Apache maven build tool. The service is designed to interact with a MongoDB key/value model with associations between various types of user defined entities. 
 As a rule, each micro service adheres to the standard C-R-U-D operations on the narrow set of entity and data each service provides. Other operations have also been implemented that manipulate more complex derived data structures.
 
-*technology stack
+# technology stack
 
 The technology stack includes Apache Maven, Java 1.8, Stream API, Method references, Functions, Functional Interfaces, Lambda expressions and other more recent tools.
 
@@ -29,5 +29,4 @@ Special attention was made to ensure the proper documentation of key functionali
 * MongoDB 
 * Aspects 
 
-#design documentation
-
+# design documentation
